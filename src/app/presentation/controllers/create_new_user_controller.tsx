@@ -7,7 +7,7 @@ import { GenerateRandomId } from "@/src/core/utils";
 
 function NewUser(){
     const id = GenerateRandomId();
-    return new UserEntity({ id:id , name:'' , lastNane:'' , email:'',documentType:'CC', document:'', phoneNumber:0 ,address:'', currentStep:''});
+    return new UserEntity({ id:id , name:'' , lastName:'' , email:'',documentType:'CC', document:'', phoneNumber:0 ,address:'', currentStep:'', comment:''});
 }
 
 function SetDataUserContext(userEntity:UserEntity){ 

@@ -1,16 +1,14 @@
+import NavigateStep from "./navigate_step";
 import ProgressBar from "./progress_bar";
 
-
 function HeaderPage() {
-
     return (
         <div >
-            <h1>
-                progreso
-            </h1>
-            <p />
+             &nbsp;
+            <NavigateStep />
+            &nbsp;
             <ProgressBar />
-            <p />
+            &nbsp;
             <hr />
         </div>
     

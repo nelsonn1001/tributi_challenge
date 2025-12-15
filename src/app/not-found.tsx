@@ -8,7 +8,7 @@ return(
     Page Not Found
 </h2>
 
- <Link href="/presentation/pages/page_home">go home</Link>
+ <Link href="/">go home</Link>
 </>
 )
 }

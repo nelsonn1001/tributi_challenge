@@ -2,42 +2,48 @@
 
 'use client'
 
-import { JSX, useContext } from "react";
+import React,{ JSX, useContext } from "react";
 import NotFound from "@/src/app/not-found";
-import { DocTypes, FormTypes } from "@/src/core/constant";
+import { DocTypes, EndStep, FormTypes } from "@/src/core/constant";
 import FormSchemaEntity from "@/src/app/domain/entities/form_schema_entity";
 import FieldStructureEntity from "@/src/app/domain/entities/field_structure_entity";
-
 import { SchemaPageContext, UserContext } from "../../../controllers/context_controller";
-import React from "react";
-
-import UserEntity from "@/src/app/domain/entities/user_entity";
 import { redirect } from "next/navigation";
+import Link from "next/link";
+import { GetUserValue, ValidateClick } from "@/src/core/utils";
 
 
      function DynamicPage({ params }: { params: Promise<{ stepId: string }> }) {
    
     const stepId = React.use(params).stepId;
-
-
     const { currentUser,setCurrentUser } = useContext(UserContext);
-
-    
     const { schema } = useContext(SchemaPageContext);
     const currentIndex = schema.config.findIndex((config) => config.stepId === stepId);
 
+           if (stepId === EndStep) {
+          return ( <>
+                 <h2>
+                     Felicidades
+                 </h2>
+
+                 <Link href="/">go home</Link>
+             </>);
+         }
+
     function DynamicText({ fieldEntity }: { fieldEntity: FieldStructureEntity }) {
-        return <pre id={fieldEntity.componentId} >
+        return <span id={fieldEntity.componentId} >
             {fieldEntity.value}
-        </pre>
+        </span>
 
     }
 
     function DynamicTextField({ fieldEntity }: { fieldEntity: FieldStructureEntity }) {
+            const val =GetUserValue({entity:fieldEntity,currentUser});
+
         return <>
-            <pre id={`${fieldEntity.componentId}LB`} ></pre>
-            <p />
-            <input id={fieldEntity.componentId} placeholder={fieldEntity.placeHolder} maxLength={fieldEntity.maxLength} pattern={fieldEntity.validate} >
+            <span id={`${fieldEntity.componentId}LB`} />
+            &nbsp;
+            <input id={fieldEntity.componentId} placeholder={fieldEntity.placeHolder} maxLength={fieldEntity.maxLength} pattern={fieldEntity.validate} defaultValue={val} >
             </input>
         </>
     }
@@ -55,31 +61,10 @@ import { redirect } from "next/navigation";
 
     function OnClickButton({ allFields, nextIndexId }: { allFields: FieldStructureEntity[], nextIndexId: string }) {
 
-        let allow = true;
-        for (let index = 0; index < allFields.length; index++) {
-            const entity = allFields[index];
-
-            if (entity.type === FormTypes.textField) {
-
-                const fieldElement = document.getElementById(`${entity.componentId}`) as HTMLInputElement;
-
-                const labelElement = document.getElementById(`${entity.componentId}LB`) as HTMLInputElement;
-               
-                if (fieldElement.value.length < 1) {
-                    labelElement.textContent = 'Por favor ingresa información';
-                    allow = false;
-                    break;
-                } else {
-                    labelElement.textContent = '';
-                }
-
-            }
-        }
-
-        if (allow) {
-           
-  setCurrentUser({...currentUser,currentStep:nextIndexId} as UserEntity);
-
+    const {updateUser,isValid}= ValidateClick({allFields,currentUser,nextIndexId})
+    
+        if (isValid) {     
+  setCurrentUser(updateUser);
    redirect(`/presentation/pages/dynamic_page/${nextIndexId}`);
             
         
@@ -88,8 +73,9 @@ import { redirect } from "next/navigation";
 
 
     function DynamicButton({ fieldEntity, formEntity, nextIndexId }: { fieldEntity: FieldStructureEntity, formEntity: FormSchemaEntity, nextIndexId: string }) {
-        return <>
-            <p />
+      
+      return <>
+            &nbsp;
             <button id={fieldEntity.componentId} onClick={() => OnClickButton({ allFields: formEntity.fields, nextIndexId: nextIndexId })}>
                 {fieldEntity.value}
             </button>
@@ -105,11 +91,11 @@ import { redirect } from "next/navigation";
         const currentFormSchemaEntity = schema.config[currentIndex];
         if (currentIndex + 1 < schema.config.length) {
             nextIndexId = schema.config[currentIndex + 1].stepId;
+        }else if(currentIndex + 1 == schema.config.length){
+           nextIndexId = EndStep;
         }
 
-        const result: JSX.Element[] = [
-        ];
-
+        const result: JSX.Element[] = [];
         currentFormSchemaEntity.fields.map((element) => {
 
             switch (element.type) {
@@ -131,7 +117,6 @@ import { redirect } from "next/navigation";
             };
         });
 
-       
         return <>{...result}</>
     }
 

@@ -2,12 +2,13 @@
 export interface UserModel {
     id: number;
     name: string;
-    lastNane: string;
+    lastName: string;
     email: string;
     documentType:string;
     document: string;
     phoneNumber: number;
     address: string;
-    currentStep:string;
-
+    currentStep:string; 
+    comment:string;
+  
 }
