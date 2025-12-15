@@ -10,10 +10,11 @@ class FieldStructureEntity {
     componentId: string;
     componentParamName: string;
     value:string;
+    isRequired:boolean;
 
 
     constructor({ type, validate, maxLength, baseColor,
-        placeHolder, componentId, componentParamName,value }: FieldStructureModel) {
+        placeHolder, componentId, componentParamName,value,isRequired }: FieldStructureModel) {
         this.type=type;
         this.validate = validate;
         this.maxLength = maxLength;
@@ -22,6 +23,7 @@ class FieldStructureEntity {
         this.componentId = componentId;
         this.componentParamName = componentParamName;
         this.value=value;
+        this.isRequired=isRequired;
 
     }
 

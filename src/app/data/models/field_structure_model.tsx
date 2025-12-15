@@ -9,5 +9,5 @@ export interface FieldStructureModel {
     componentId: string;
     componentParamName: string;
     value:string;
-
+    isRequired:boolean;
 }

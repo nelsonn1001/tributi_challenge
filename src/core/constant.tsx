@@ -15,7 +15,8 @@ const JsonPageSchema=`
   "placeHolder": "",
   "componentId": "t001",
   "componentParamName": "",
-  "value":"Nombre"
+  "value":"Nombre",
+  "isRequired":true
 },
 {
   "type": "textField",
@@ -25,7 +26,8 @@ const JsonPageSchema=`
   "placeHolder": "Escribe tu nombre",
   "componentId": "tf001",
   "componentParamName": "name",
-  "value":""
+  "value":"Nombre",
+  "isRequired":true
 },
   {
   "type": "text",
@@ -35,7 +37,8 @@ const JsonPageSchema=`
   "placeHolder": "",
   "componentId": "t002",
   "componentParamName": "",
-  "value":"Apellido"
+  "value":"Apellido",
+  "isRequired":true
 },
 {
   "type": "textField",
@@ -45,7 +48,8 @@ const JsonPageSchema=`
   "placeHolder": "Escribe tu Apellido",
   "componentId": "tf002",
   "componentParamName": "lastName",
-  "value":""
+  "value":"Apellido",
+  "isRequired":true
 },
 {
   "type": "button",
@@ -92,17 +96,19 @@ const JsonPageSchema=`
   "placeHolder": "",
   "componentId": "t004",
   "componentParamName": "",
-  "value":"Documento"
+  "value":"Documento",
+   "isRequired":true
 },
 {
   "type": "textField",
-  "validate": "onlyNumbers",
+  "validate": "",
   "maxLength": 12,
   "baseColor": "#edf8e0ff",
   "placeHolder": "Escribe tu Documento",
   "componentId": "tf003",
   "componentParamName": "document",
-  "value":""
+  "value":"Documento",
+  "isRequired":true
 },
 {
   "type": "button",
@@ -130,17 +136,19 @@ const JsonPageSchema=`
   "placeHolder": "",
   "componentId": "t005",
   "componentParamName": "",
-  "value":"Email"
+  "value":"Email",
+  "isRequired":true
 },
 {
   "type": "textField",
   "validate": "emailMatch",
   "maxLength": 40,
   "baseColor": "#edf8e0ff",
-  "placeHolder": "Escribe tu Correo",
+  "placeHolder": "Escribe tu Email",
   "componentId": "tf004",
   "componentParamName": "email",
-  "value":""
+  "value":"Email",
+  "isRequired":true
 },
   {
   "type": "text",
@@ -150,7 +158,8 @@ const JsonPageSchema=`
   "placeHolder": "",
   "componentId": "t006",
   "componentParamName": "",
-  "value":"Teléfono"
+  "value":"Teléfono",
+   "isRequired":true
 },
 {
   "type": "textField",
@@ -160,7 +169,8 @@ const JsonPageSchema=`
   "placeHolder": "Escribe tu Teléfono",
   "componentId": "tf005",
   "componentParamName": "phone",
-  "value":""
+  "value":"Teléfono",
+  "isRequired":true
 },
 {
   "type": "button",
@@ -188,7 +198,8 @@ const JsonPageSchema=`
   "placeHolder": "",
   "componentId": "t007",
   "componentParamName": "",
-  "value":"Dirección"
+  "value":"Dirección",
+  "isRequired":true
 },
 {
   "type": "textField",
@@ -198,7 +209,8 @@ const JsonPageSchema=`
   "placeHolder": "Escribe tu Dirección",
   "componentId": "tf006",
   "componentParamName": "address",
-  "value":""
+   "value":"Dirección",
+   "isRequired":true
 },
 {
   "type": "button",
@@ -234,7 +246,8 @@ const JsonPageSchemaV2=`
   "placeHolder": "",
   "componentId": "t001",
   "componentParamName": "",
-  "value":"Nombre"
+  "value":"Nombre",
+   "isRequired":true
 },
 {
   "type": "textField",
@@ -244,7 +257,8 @@ const JsonPageSchemaV2=`
   "placeHolder": "Escribe tu nombre",
   "componentId": "tf001",
   "componentParamName": "name",
-  "value":""
+  "value":"Nombre",
+  "isRequired":true
 },
   {
   "type": "text",
@@ -254,7 +268,8 @@ const JsonPageSchemaV2=`
   "placeHolder": "",
   "componentId": "t002",
   "componentParamName": "",
-  "value":"Apellido"
+  "value":"Apellido",
+  "isRequired":false
 },
 {
   "type": "textField",
@@ -264,7 +279,8 @@ const JsonPageSchemaV2=`
   "placeHolder": "Escribe tu Apellido",
   "componentId": "tf002",
   "componentParamName": "lastName",
-  "value":""
+  "value":"Apellido",
+  "isRequired":false
 },
 {
   "type": "button",
@@ -311,17 +327,19 @@ const JsonPageSchemaV2=`
   "placeHolder": "",
   "componentId": "t004",
   "componentParamName": "",
-  "value":"Documento"
+  "value":"Documento",
+  "isRequired":true
 },
 {
   "type": "textField",
-  "validate": "onlyNumbers",
+  "validate": "",
   "maxLength": 12,
   "baseColor": "#edf8e0ff",
   "placeHolder": "Escribe tu Documento",
   "componentId": "tf003",
   "componentParamName": "document",
-  "value":""
+  "value":"Documento",
+  "isRequired":true
 },
 {
   "type": "button",
@@ -349,7 +367,8 @@ const JsonPageSchemaV2=`
   "placeHolder": "",
   "componentId": "t005",
   "componentParamName": "",
-  "value":"Email"
+  "value":"Correo Electrónico",
+  "isRequired":true
 },
 {
   "type": "textField",
@@ -359,7 +378,8 @@ const JsonPageSchemaV2=`
   "placeHolder": "Escribe tu Correo",
   "componentId": "tf004",
   "componentParamName": "email",
-  "value":""
+  "value":"Correo Electrónico",
+  "isRequired":true
 },
   {
   "type": "text",
@@ -369,7 +389,8 @@ const JsonPageSchemaV2=`
   "placeHolder": "",
   "componentId": "t006",
   "componentParamName": "",
-  "value":"Teléfono"
+  "value":"Teléfono",
+  "isRequired":true
 },
 {
   "type": "textField",
@@ -379,7 +400,8 @@ const JsonPageSchemaV2=`
   "placeHolder": "Escribe tu Teléfono",
   "componentId": "tf005",
   "componentParamName": "phone",
-  "value":""
+  "value":"Teléfono",
+  "isRequired":true
 },
 {
   "type": "button",
@@ -407,7 +429,8 @@ const JsonPageSchemaV2=`
   "placeHolder": "",
   "componentId": "t007",
   "componentParamName": "",
-  "value":"comentario"
+  "value":"Dirección",
+  "isRequired":true
 },
 {
   "type": "textField",
@@ -417,7 +440,8 @@ const JsonPageSchemaV2=`
   "placeHolder": "Escribe tu Dirección",
   "componentId": "tf006",
   "componentParamName": "address",
-  "value":""
+  "value":"Dirección",
+  "isRequired":true
 },
   {
   "type": "text",
@@ -427,7 +451,8 @@ const JsonPageSchemaV2=`
   "placeHolder": "",
   "componentId": "t007",
   "componentParamName": "",
-  "value":"Dirección"
+  "value":"Comentario",
+  "isRequired":false
 },
 {
   "type": "textField",
@@ -437,7 +462,8 @@ const JsonPageSchemaV2=`
   "placeHolder": "comentario",
   "componentId": "tf008",
   "componentParamName": "comments",
-  "value":""
+  "value":"Comentario",
+   "isRequired":false
 },
 {
   "type": "button",
@@ -476,9 +502,9 @@ enum FormTypes{
 
 
 enum ValidateExpression{
-    onlyNumbers=`/\d/`, 
-    noNumbers= `/^[^0-9]+$/`, 
-    emailMatch=`/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/`,
+    onlyNumbers=`\d`, 
+    noNumbers= `^[^0-9]+$`, 
+    emailMatch=`^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$`,
 }
 
 
@@ -491,15 +517,23 @@ enum FormFields{
     documentType='documentType',
     address='address',
     comment='comment',
-
 }
+
+const MessageValidator='Llena el campo de ';
+const MessageValidatorFormatOne='Formato no valido Ingresa solo Números';
+const MessageValidatorFormatTwo='Formato no valido Ingresa solo letras';
+const MessageValidatorFormatThree=' Ingresa un Email valido';
 
 export {
 DocTypes,
 FormTypes,
 ValidateExpression,
+FormFields,
 JsonPageSchema,
 JsonPageSchemaV2,
 EndStep,
-FormFields  
+MessageValidator,
+MessageValidatorFormatOne,
+MessageValidatorFormatTwo,
+MessageValidatorFormatThree
 }

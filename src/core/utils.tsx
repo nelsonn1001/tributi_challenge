@@ -1,7 +1,7 @@
 import FieldStructureEntity from "../app/domain/entities/field_structure_entity";
 import SchemaEntity from "../app/domain/entities/schema_entity";
 import UserEntity from "../app/domain/entities/user_entity";
-import { FormFields, FormTypes } from "./constant";
+import { FormFields, FormTypes, MessageValidator, MessageValidatorFormatOne, MessageValidatorFormatThree, MessageValidatorFormatTwo, ValidateExpression } from "./constant";
 
 function GenerateRandomId() {
   // const uuid =crypto.randomUUID;
@@ -67,14 +67,38 @@ function ValidateClick({ allFields, currentUser, nextIndexId }: { allFields: Fie
 
       const fieldElement = document.getElementById(`${entity.componentId}`) as HTMLInputElement;
 
-      const labelElement = document.getElementById(`${entity.componentId}LB`) as HTMLInputElement;
+      const spanElement = document.getElementById(`${entity.componentId}LB`) as HTMLSpanElement;
 
-      if (fieldElement.value.length < 1) {
-        labelElement.textContent = 'Por favor ingresa información';
+      if (fieldElement.value.length < 1 && entity.isRequired) {
+        spanElement.textContent = `${MessageValidator}${entity.value}`;
         isValid = false;
         break;
-      } else {
-        labelElement.textContent = '';
+      }
+      else if (fieldElement.value.length > 0) {
+        const regex = new RegExp(ValidateExpression[entity.validate as keyof typeof ValidateExpression] )
+
+        if (!regex.test(fieldElement.value)) {
+           console.log(`valido    ${entity.validate}`)
+          switch (entity.validate) {
+            case 'onlyNumbers':
+              spanElement.textContent = MessageValidatorFormatOne;
+              break;
+            case 'noNumbers':
+              spanElement.textContent = MessageValidatorFormatTwo;
+              break;
+            case 'emailMatch':
+              spanElement.textContent = MessageValidatorFormatThree;
+              break;
+            default:
+              break;
+
+          }
+
+          isValid = false;
+          break;
+        }
+
+        spanElement.textContent = '';
         switch (entity.componentParamName) {
 
           case FormFields.name:
@@ -89,12 +113,8 @@ function ValidateClick({ allFields, currentUser, nextIndexId }: { allFields: Fie
             updateUser.document = fieldElement.value;
             break;
 
-          case FormFields.documentType:
-            updateUser.documentType = fieldElement.value;
-            break;
-
           case FormFields.phone:
-            updateUser.phoneNumber = Number.parseInt(fieldElement.value);
+            updateUser.phoneNumber =Number.isNaN(fieldElement.value)? 0: Number.parseInt(fieldElement.value);
             break;
 
           case FormFields.email:
@@ -115,6 +135,9 @@ function ValidateClick({ allFields, currentUser, nextIndexId }: { allFields: Fie
 
       }
 
+    } else if (entity.type === FormTypes.select) {
+      const fieldElement = document.getElementById(`${entity.componentId}`) as HTMLSelectElement;
+      updateUser.documentType = fieldElement.value;
     }
   }
 
