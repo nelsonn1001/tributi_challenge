@@ -26,6 +26,7 @@
     text-overflow: ellipsis;
     margin: auto 1px;
     position: relative;
+    text-align: center;
 
 }
 
@@ -107,7 +108,7 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 16px;
     position: relative;
-    margin: auto;
+    margin:10px auto;
 }
 
 .tr-ch-btn-margin {
@@ -175,10 +176,10 @@
 }
 
 .tr-ch-div-flex {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     position: relative;
     margin: auto;
-
 
 }
 
