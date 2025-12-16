@@ -83,7 +83,7 @@ function DynamicPage({ params }: { params: Promise<{ stepId: string }> }) {
     function DynamicButton({ fieldEntity, formEntity, nextIndexId }: { fieldEntity: FieldStructureEntity, formEntity: FormSchemaEntity, nextIndexId: string }) {
         return <>
             <button id={fieldEntity.componentId} 
-            onClick={() => OnClickButton({ allFields: formEntity.fields, nextIndexId: nextIndexId })} className={styles['tr-ch-btn']}>
+            onClick={() => OnClickButton({ allFields: formEntity.fields, nextIndexId: nextIndexId })} className={styles['tr-ch-btn-margin']}>
                 {fieldEntity.value}
             </button>
             <br />
