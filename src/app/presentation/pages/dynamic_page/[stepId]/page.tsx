@@ -2,7 +2,7 @@
 
 'use client'
 
-import React, { JSX, useContext } from "react";
+import { JSX, use, useContext } from "react";
 import NotFound from "@/src/app/not-found";
 import { DocTypes, EndStep, FormTypes, } from "@/src/core/constant";
 import FormSchemaEntity from "@/src/app/domain/entities/form_schema_entity";
@@ -18,7 +18,7 @@ import styles from '@/src/app/page.module.css';
 
 function DynamicPage({ params }: { params: Promise<{ stepId: string }> }) {
 
-    const stepId = React.use(params).stepId;
+    const stepId = use(params).stepId;
     const { currentUser, setCurrentUser } = useContext(UserContext);
     const { schema } = useContext(SchemaPageContext);
     const currentIndex = schema.config.findIndex((config) => config.stepId === stepId);
