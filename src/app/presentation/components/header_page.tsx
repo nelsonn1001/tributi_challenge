@@ -4,11 +4,12 @@ import ProgressBar from "./progress_bar";
 function HeaderPage() {
     return (
         <div >
-             &nbsp;
-            <NavigateStep />
-            &nbsp;
+            <br/>
             <ProgressBar />
-            &nbsp;
+           <br/>
+            
+            <NavigateStep />
+            <br/>
             <hr />
         </div>
     

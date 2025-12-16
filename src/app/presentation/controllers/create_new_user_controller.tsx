@@ -4,6 +4,9 @@ import { useContext } from "react";
 import UserEntity from "../../domain/entities/user_entity";
 import {UserContext} from "./context_controller";
 import { GenerateRandomId } from "@/src/core/utils";
+import SaveDataUseCase from "../../domain/use_cases/save_data_use_case";
+
+
 
 function NewUser(){
     const id = GenerateRandomId();
@@ -16,7 +19,12 @@ function SetDataUserContext(userEntity:UserEntity){
    
 }
 
+ function SaveUser(userEntity:UserEntity){
+    SaveDataUseCase(userEntity,'LastUserEntity');
+ }
+
 export {
 SetDataUserContext,
-NewUser
+NewUser,
+SaveUser
 };

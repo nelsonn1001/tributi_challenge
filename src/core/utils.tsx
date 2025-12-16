@@ -9,7 +9,7 @@ function GenerateRandomId() {
   try {
     uuid = Number.parseInt(`${Date.now()}${Math.random() * 1000}`);
   } catch (error) {
-    console.log('error in GenerateRandomId ::: ' + error);
+    console.error('error in GenerateRandomId ::: ' + error);
   }
 
   return uuid
@@ -78,7 +78,7 @@ function ValidateClick({ allFields, currentUser, nextIndexId }: { allFields: Fie
         const regex = new RegExp(ValidateExpression[entity.validate as keyof typeof ValidateExpression] )
 
         if (!regex.test(fieldElement.value)) {
-           console.log(`valido    ${entity.validate}`)
+          
           switch (entity.validate) {
             case 'onlyNumbers':
               spanElement.textContent = MessageValidatorFormatOne;

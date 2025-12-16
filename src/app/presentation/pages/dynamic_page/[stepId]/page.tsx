@@ -10,7 +10,10 @@ import FieldStructureEntity from "@/src/app/domain/entities/field_structure_enti
 import { SchemaPageContext, UserContext } from "../../../controllers/context_controller";
 import { redirect } from "next/navigation";
 import { GetUserValue, ValidateClick } from "@/src/core/utils";
-import { NewUser } from "../../../controllers/create_new_user_controller";
+import EndDetail from "../../../components/end_detail";
+import StartInHome from "../../../components/start_in_home";
+import { SaveUser } from "../../../controllers/create_new_user_controller";
+import styles from '@/src/app/page.module.css';
 
 
 function DynamicPage({ params }: { params: Promise<{ stepId: string }> }) {
@@ -20,32 +23,18 @@ function DynamicPage({ params }: { params: Promise<{ stepId: string }> }) {
     const { schema } = useContext(SchemaPageContext);
     const currentIndex = schema.config.findIndex((config) => config.stepId === stepId);
 
-    function GoHome() {
-        setCurrentUser(NewUser());
-        redirect('/');
-    }
-
     if (stepId === EndStep) {
-        const user = currentUser;
-
-        console.log(` user<<<<<  ${JSON.stringify(user)}`);
+        SaveUser(currentUser);
         return (<>
-            <h2>
-                Felicidades
-            </h2>
-
-            <button onClick={() => GoHome()}>
-                Ir al Home
-            </button>
+            <EndDetail />
+           <StartInHome/>
         </>);
-
     }
 
     function DynamicText({ fieldEntity }: { fieldEntity: FieldStructureEntity }) {
         return <>
-        { fieldEntity.isRequired? <span>*</span>:null}
-            <span id={fieldEntity.componentId} >
-                {fieldEntity.value}
+            <span id={fieldEntity.componentId} className={styles['tr-ch-text']}>
+                { fieldEntity.isRequired? `*${fieldEntity.value}`:`${fieldEntity.value}`}
             </span>
             <br />
         </>
@@ -61,9 +50,9 @@ function DynamicPage({ params }: { params: Promise<{ stepId: string }> }) {
         }
 
         return <>
-            <span id={`${fieldEntity.componentId}LB`} />
+            <span id={`${fieldEntity.componentId}LB`} className={styles['tr-ch-text-alert']}/>
             <br />
-            <input id={fieldEntity.componentId} placeholder={fieldEntity.placeHolder} maxLength={fieldEntity.maxLength} defaultValue={defaultValue} >
+            <input id={fieldEntity.componentId} placeholder={fieldEntity.placeHolder} maxLength={fieldEntity.maxLength} defaultValue={defaultValue} className={styles['tr-ch-text-field']}>
             </input>
             <br />
         </>
@@ -73,7 +62,7 @@ function DynamicPage({ params }: { params: Promise<{ stepId: string }> }) {
         const val = GetUserValue({ entity: fieldEntity, currentUser });
 
         return <>
-            <select id={fieldEntity.componentId} defaultValue={val} >
+            <select id={fieldEntity.componentId} defaultValue={val} className={styles['tr-ch-select']}>
                 <option value={DocTypes.CC} >{DocTypes.CC}</option>
                 <option value={DocTypes.CE}>{DocTypes.CE}</option>
                 <option value={DocTypes.TI}>{DocTypes.TI}</option>
@@ -93,7 +82,8 @@ function DynamicPage({ params }: { params: Promise<{ stepId: string }> }) {
 
     function DynamicButton({ fieldEntity, formEntity, nextIndexId }: { fieldEntity: FieldStructureEntity, formEntity: FormSchemaEntity, nextIndexId: string }) {
         return <>
-            <button id={fieldEntity.componentId} onClick={() => OnClickButton({ allFields: formEntity.fields, nextIndexId: nextIndexId })}>
+            <button id={fieldEntity.componentId} 
+            onClick={() => OnClickButton({ allFields: formEntity.fields, nextIndexId: nextIndexId })} className={styles['tr-ch-btn']}>
                 {fieldEntity.value}
             </button>
             <br />
@@ -134,7 +124,7 @@ function DynamicPage({ params }: { params: Promise<{ stepId: string }> }) {
             };
         });
 
-        return <>{...result}</>
+        return <div className={styles['tr-ch-div-default']}>{...result}</div>
     }
 
 }

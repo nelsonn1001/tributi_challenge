@@ -3,9 +3,11 @@
 const JsonPageSchema=`
 {
   "schemaName": "v1",
+  "schemaTittle":"Bienvenido Ingresa tu información",
   "config": [
 {
   "stepId": "1",
+  "stepTittle":"Información Inicial",
   "fields": [
   {
   "type": "text",
@@ -67,6 +69,7 @@ const JsonPageSchema=`
 },
 {
   "stepId": "2",
+  "stepTittle":"Identificación",
   "fields": [
   {
   "type": "text",
@@ -127,6 +130,7 @@ const JsonPageSchema=`
 ,
 {
   "stepId": "3",
+  "stepTittle":"Información de Contacto",
   "fields": [
   {
   "type": "text",
@@ -189,6 +193,7 @@ const JsonPageSchema=`
 ,
 {
   "stepId": "4",
+  "stepTittle":"Información Adicional",
   "fields": [
   {
   "type": "text",
@@ -234,9 +239,11 @@ const JsonPageSchema=`
 const JsonPageSchemaV2=`
 {
   "schemaName": "v1",
+  "schemaTittle":"Bienvenido Ingresa tu información",
   "config": [
 {
   "stepId": "1",
+  "stepTittle":"Información Inicial",
   "fields": [
   {
   "type": "text",
@@ -298,6 +305,7 @@ const JsonPageSchemaV2=`
 },
 {
   "stepId": "2",
+  "stepTittle":"Identificación",
   "fields": [
   {
   "type": "text",
@@ -358,6 +366,7 @@ const JsonPageSchemaV2=`
 ,
 {
   "stepId": "3",
+  "stepTittle":"Información de Contacto",
   "fields": [
   {
   "type": "text",
@@ -420,6 +429,7 @@ const JsonPageSchemaV2=`
 ,
 {
   "stepId": "4",
+  "stepTittle":"Información Adicional",
   "fields": [
   {
   "type": "text",

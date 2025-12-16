@@ -6,12 +6,13 @@ class FormSchemaEntity {
     stepId: string;
     fields: FieldStructureEntity[];
     stepColor: string;
+    stepTittle: string;
 
-    constructor({ stepId, fields, stepColor }: FormSchemaModel) {
+    constructor({ stepId, fields, stepColor, stepTittle }: FormSchemaModel) {
         this.stepId = stepId;
         this.fields = fields.map((field) => { return new FieldStructureEntity({ ...field }); });
-
         this.stepColor = stepColor;
+        this.stepTittle = stepTittle;
     }
 
     toObject(): FormSchemaEntity {

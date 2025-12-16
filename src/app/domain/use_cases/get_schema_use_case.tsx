@@ -9,13 +9,14 @@ import SchemaEntity from "../entities/schema_entity";
      const repository:SchemaRepo =new SchemaFromJson();
       return  repository.GetSchemaData(schemaName);
     } catch (error) {
-       console.log(`Error in GetSchemaUseCase ::: ${error}`)
+       console.error(`Error in GetSchemaUseCase ::: ${error}`)
     }
 
   return new  SchemaEntity(
     {
     schemaName: '',
-    config: []
+    config: [],
+    schemaTittle:''
     }
   );
 

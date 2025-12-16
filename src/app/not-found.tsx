@@ -1,16 +1,15 @@
+import StartInHome from "./presentation/components/start_in_home";
+import styles from '@/src/app/page.module.css';
+function NotFound() {
 
-import Link from 'next/link'
+    return (<div className={styles['tr-ch-div']}>
+        <span className={styles['tr-ch-text-big']}>
+            Pagina No Encontrada
+        </span>
+        <StartInHome/>
+    </div>);
 
-function NotFound(){
-return(
-<>
-<h2>
-    Page Not Found
-</h2>
 
- <Link href="/">go home</Link>
-</>
-)
 }
 
 export default NotFound;

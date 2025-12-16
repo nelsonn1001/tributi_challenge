@@ -12,8 +12,7 @@ function ProgressBar() {
     const totalSteps = schema.config.length + 1;
     const step = currentUser.currentStep == EndStep ? totalSteps : schema.config.findIndex((config) => config.stepId === currentUser.currentStep) + 1;
     const percentSteps = (step / totalSteps) * 100;
-    console.log(` currentUser<<<<<  ${JSON.stringify(currentUser)}`);
-    console.log(` percentSteps<<<<<  ${percentSteps}`);
+
     const styleBarBorder = {
         color: "#b4b2b2ff",
         background: "#b4b2b2ff",

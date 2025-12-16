@@ -4,10 +4,12 @@ import FormSchemaEntity from "./form_schema_entity";
 class SchemaEntity {
     schemaName: string;
     config: FormSchemaEntity[];
+    schemaTittle: string;
 
-    constructor({ schemaName, config, }: SchemaModel) {
+    constructor({ schemaName, config, schemaTittle }: SchemaModel) {
         this.schemaName = schemaName;
-        this.config = config.map((field) => { return new FormSchemaEntity({ ...field }); }) ;
+        this.config = config.map((field) => { return new FormSchemaEntity({ ...field }); });
+        this.schemaTittle = schemaTittle;
     }
 
     toObject(): SchemaEntity {

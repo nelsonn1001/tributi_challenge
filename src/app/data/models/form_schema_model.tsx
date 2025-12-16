@@ -4,4 +4,5 @@ export interface FormSchemaModel {
     stepId: string;
     fields: FieldStructureModel[];
     stepColor: string;
+    stepTittle:string;
 }
